@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlishBarber — Zamonaviy Sartaroshxona</title>
+<meta name="description" content="AlishBarber — Xorazm, Xonqadagi premium erkaklar sartaroshxonasi. Klassik soch olish, soqol dizayni va professional parvarish xizmatlari.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================
+   TOKENS
+   ============================================ */
+:root{
+  --void:#0A0908;
+  --void-2:#0F0E0C;
+  --brass:#C9A24B;
+  --brass-dim:#8A6F35;
+  --brass-bright:#E0BC6C;
+  --bone:#E8E2D4;
+  --ash:#6B655A;
+  --card:#151311;
+  --card-border:#262019;
+  --blood:#7A2E2E;
+
+  --font-display:'Playfair Display', Georgia, serif;
+  --font-body:'Manrope', 'Segoe UI', Tahoma, sans-serif;
+
+  --space-xs:8px;
+  --space-sm:16px;
+  --space-md:32px;
+  --space-lg:64px;
+  --space-xl:clamp(60px, 10vw, 120px);
+  --container-pad:clamp(20px, 6vw, 80px);
+
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+html{scroll-behavior:smooth;}
+
+body{
+  background:var(--void);
+  color:var(--bone);
+  font-family:var(--font-body);
+  font-weight:400;
+  line-height:1.65;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+img{max-width:100%;display:block;object-fit:cover;}
+
+a{color:inherit;text-decoration:none;}
+
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+
+.container{
+  max-width:1320px;
+  margin:0 auto;
+  padding-left:var(--container-pad);
+  padding-right:var(--container-pad);
+}
+
+section{
+  padding-top:var(--space-xl);
+  padding-bottom:var(--space-xl);
+  position:relative;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+  outline:2px solid var(--brass);
+  outline-offset:3px;
+  border-radius:2px;
+}
+
+::selection{
+  background:var(--brass);
+  color:var(--void);
+}
+
+/* ============================================
+   TYPOGRAPHY SCALE
+   ============================================ */
+.eyebrow{
+  font-family:var(--font-body);
+  font-size:12.5px;
+  letter-spacing:0.34em;
+  text-transform:uppercase;
+  color:var(--brass);
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.eyebrow::before{
+  content:'';
+  width:28px;
+  height:1px;
+  background:var(--brass-dim);
+  display:inline-block;
+}
+
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:700;
+  color:var(--bone);
+  line-height:1.08;
+  letter-spacing:0.005em;
+}
+
+h1{font-size:clamp(40px, 7vw, 88px); font-weight:800;}
+h2{font-size:clamp(32px, 4.8vw, 56px);}
+h3{font-size:clamp(21px, 2.4vw, 26px); font-weight:600;}
+
+p{color:var(--ash); font-size:16.5px; max-width:60ch; font-weight:400;}
+
+.lead{
+  font-size:clamp(17px,1.7vw,20px);
+  color:var(--bone);
+  opacity:0.8;
+  font-weight:300;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:18px 38px;
+  font-size:13px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  font-weight:700;
+  font-family:var(--font-body);
+  border-radius:6px;
+  transition:transform 0.3s var(--ease), background 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  white-space:nowrap;
+  min-height:54px;
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::before{
+  content:'';
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:0;
+  height:0;
+  background:rgba(255,255,255,0.1);
+  border-radius:50%;
+  transform:translate(-50%,-50%);
+  transition:width 0.6s, height 0.6s;
+}
+
+.btn:active::before{
+  width:300px;
+  height:300px;
+}
+
+.btn-primary{
+  background:var(--brass);
+  color:var(--void);
+  border:1px solid var(--brass);
+  box-shadow:0 4px 15px rgba(201,162,75,0.2);
+}
+.btn-primary:hover{
+  background:var(--brass-bright);
+  border-color:var(--brass-bright);
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(201,162,75,0.4);
+}
+
+.btn-ghost{
+  background:rgba(10,9,8,0.35);
+  color:var(--bone);
+  border:2px solid rgba(232,226,212,0.32);
+  backdrop-filter:blur(6px);
+}
+.btn-ghost:hover{
+  border-color:var(--brass);
+  color:var(--brass);
+  transform:translateY(-2px);
+  background:rgba(201,162,75,0.1);
+}
+
+.btn-call{
+  background:var(--brass);
+  color:var(--void);
+  border:1px solid var(--brass);
+  font-weight:700;
+  box-shadow:0 4px 15px rgba(201,162,75,0.2);
+}
+.btn-call:hover{
+  background:var(--brass-bright);
+  color:var(--void);
+  transform:translateY(-3px);
+  box-shadow:0 8px 25px rgba(201,162,75,0.4);
+}
+
+/* ============================================
+   SIGNATURE: gold divider shine
+   ============================================ */
+.divider{
+  position:relative;
+  height:1px;
+  width:100%;
+  background:linear-gradient(90deg, transparent, var(--card-border) 15%, var(--card-border) 85%, transparent);
+  overflow:hidden;
+  margin:0 auto;
+}
+.divider::after{
+  content:'';
+  position:absolute;
+  top:0; left:-30%;
+  width:30%;
+  height:100%;
+  background:linear-gradient(90deg, transparent, var(--brass) 50%, transparent);
+  animation:shine 7s ease-in-out infinite;
+  animation-delay:2s;
+}
+@keyframes shine{
+  0%{left:-30%;}
+  35%{left:110%;}
+  100%{left:110%;}
+}
+
+/* ============================================
+   NAV
+   ============================================ */
+.nav{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:1000;
+  padding:22px var(--container-pad);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  transition:background 0.4s var(--ease), padding 0.4s var(--ease), border-color 0.4s var(--ease);
+  border-bottom:1px solid transparent;
+  background-image:linear-gradient(180deg, rgba(10,9,8,0.80) 0%, rgba(10,9,8,0.55) 60%, rgba(10,9,8,0.35) 100%), url('BASE64_IMAGE_PLACEHOLDER');
+  background-size:cover;
+  background-position:center 35%;
+  background-repeat:no-repeat;
+}
+.nav.scrolled{
+  background-image:linear-gradient(180deg, rgba(10,9,8,0.94) 0%, rgba(10,9,8,0.90) 100%), url('BASE64_IMAGE_PLACEHOLDER');
+  background-size:cover;
+  background-position:center 35%;
+  backdrop-filter:blur(10px);
+  padding-top:14px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--card-border);
+}
+
+.logo{
+  font-family:var(--font-display);
+  font-size:23px;
+  font-weight:700;
+  letter-spacing:0.02em;
+  color:var(--bone);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.logo span{color:var(--brass);}
+
+.nav-links{
+  display:flex;
+  gap:38px;
+  list-style:none;
+}
+.nav-links a{
+  font-size:13px;
+  letter-spacing:0.09em;
+  text-transform:uppercase;
+  font-weight:600;
+  color:var(--bone);
+  opacity:0.8;
+  position:relative;
+  padding-bottom:4px;
+  transition:opacity 0.3s;
+}
+.nav-links a::after{
+  content:'';
+  position:absolute;
+  left:0; bottom:0;
+  width:0; height:1px;
+  background:var(--brass);
+  transition:width 0.35s var(--ease);
+}
+.nav-links a:hover{opacity:1;}
+.nav-links a:hover::after{width:100%;}
+
+.nav-cta{display:flex;align-items:center;gap:10px;}
+.nav-cta .btn{padding:4px 4px;font-size:12px;}
+.nav-call-btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:4px 14px !important;
+  font-size:10px;
+  transition:all 0.3s var(--ease);
+}
+.nav-call-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 8px 24px rgba(201,162,75,0.25);
+}
+
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  width:28px;
+  height:52px;
+  align-items:center;
+  justify-content:center;
+  z-index:1100;
+}
+.hamburger span{
+  width:24px;
+  height:1.5px;
+  background:var(--bone);
+  transition:transform 0.35s var(--ease), opacity 0.35s var(--ease);
+}
+.hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+.mobile-panel{
+  position:fixed;
+  top:0; right:0;
+  width:min(78vw, 340px);
+  height:100vh;
+  background:var(--void-2);
+  border-left:1px solid var(--card-border);
+  z-index:1050;
+  padding:100px 36px 40px;
+  transform:translateX(100%);
+  transition:transform 0.45s var(--ease);
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+}
+.mobile-panel.open{transform:translateX(0);}
+.mobile-panel a{
+  font-family:var(--font-display);
+  font-size:24px;
+  font-weight:600;
+  color:var(--bone);
+}
+.mobile-panel .btn{margin-top:14px;width:100%;}
+
+.mobile-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.6);
+  z-index:1040;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.4s;
+}
+.mobile-overlay.open{opacity:1;pointer-events:auto;}
+
+/* ============================================
+   HERO — redesigned layout
+   ============================================
+   New structure: two-column split on desktop.
+   Left = text content block (headline, lead, actions, quick info strip).
+   Right = large portrait-style framed image panel with brass border.
+   On mobile it stacks: image panel first (short), then text.
+*/
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  padding-top:120px;
+  padding-bottom:var(--space-lg);
+  background:
+    radial-gradient(circle at 85% 15%, rgba(201,162,75,0.08), transparent 55%),
+    var(--void);
+}
+
+.hero-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1.05fr 0.95fr;
+  gap:clamp(32px, 5vw, 72px);
+  align-items:center;
+}
+
+.hero-content{
+  max-width:640px;
+}
+
+.hero-content .eyebrow{margin-bottom:26px;}
+
+.hero-content h1{
+  margin-bottom:24px;
+  opacity:0;
+  transform:translateY(28px);
+  font-size:clamp(38px, 5vw, 62px);
+  line-height:1.06;
+}
+.hero-content h1 em{
+  font-style:italic;
+  color:var(--brass);
+  display:block;
+}
+
+.hero-content .lead{
+  margin-bottom:40px;
+  max-width:48ch;
+  opacity:0;
+  transform:translateY(20px);
+  font-size:18px;
+  line-height:1.75;
+}
+
+.hero-actions{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  opacity:0;
+  transform:translateY(16px);
+  margin-bottom:44px;
+}
+
+
+.hero.loaded .hero-content h1{
+  animation:heroIn 1s var(--ease) forwards;
+}
+.hero.loaded .hero-content .lead{
+  animation:heroIn 0.9s var(--ease) forwards;
+  animation-delay:0.2s;
+}
+.hero.loaded .hero-actions{
+  animation:heroIn 0.9s var(--ease) forwards;
+  animation-delay:0.4s;
+}
+
+@keyframes heroIn{
+  to{opacity:1;transform:translateY(0);}
+}
+
+
+@keyframes heroImageZoom{
+  from{transform:scale(1);}
+  to{transform:scale(1.06);}
+}
+.hero-visual::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(10,9,8,0.05) 0%, rgba(10,9,8,0.15) 55%, rgba(10,9,8,0.75) 100%);
+}
+.hero-visual::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  border:1px solid rgba(201,162,75,0.35);
+  border-radius:14px;
+  z-index:3;
+  pointer-events:none;
+}
+.hero-visual-badge{
+  position:absolute;
+  bottom:26px; left:26px;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 20px;
+  background:rgba(10,9,8,0.55);
+  border:1px solid rgba(201,162,75,0.35);
+  border-radius:8px;
+  backdrop-filter:blur(8px);
+}
+.hero-visual-badge svg{width:22px;height:22px;color:var(--brass);flex-shrink:0;}
+.hero-visual-badge span{
+  font-size:13px;
+  color:var(--bone);
+  font-weight:600;
+  letter-spacing:0.02em;
+}
+
+.scroll-cue{
+  position:absolute;
+  bottom:30px;
+  left:50%;
+  transform:translateX(-50%);
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  color:var(--ash);
+  font-size:11px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+.scroll-cue svg{
+  animation:bob 2.2s ease-in-out infinite;
+}
+@keyframes bob{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(7px);}
+}
+
+/* ============================================
+   REVEAL SYSTEM (IntersectionObserver + fallback)
+   ============================================ */
+.reveal{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+.reveal.in-view{
+  opacity:1;
+  transform:translateY(0);
+}
+.reveal-stagger > *{
+  opacity:0;
+  transform:translateY(30px);
+  transition:opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal-stagger.in-view > *{opacity:1;transform:translateY(0);}
+.reveal-stagger.in-view > *:nth-child(1){transition-delay:0.05s;}
+.reveal-stagger.in-view > *:nth-child(2){transition-delay:0.15s;}
+.reveal-stagger.in-view > *:nth-child(3){transition-delay:0.25s;}
+.reveal-stagger.in-view > *:nth-child(4){transition-delay:0.35s;}
+.reveal-stagger.in-view > *:nth-child(5){transition-delay:0.45s;}
+.reveal-stagger.in-view > *:nth-child(6){transition-delay:0.55s;}
+
+.no-js .reveal,
+.no-js .reveal-stagger > *,
+.js-fallback .reveal,
+.js-fallback .reveal-stagger > *{
+  opacity:1 !important;
+  transform:none !important;
+}
+
+/* ============================================
+   SECTION HEADER (shared)
+   ============================================ */
+.section-head{
+  max-width:640px;
+  margin-bottom:var(--space-lg);
+  opacity:0;
+  animation:fadeInUp 0.8s var(--ease) forwards;
+}
+.section-head h2{
+  margin-top:18px;
+  font-size:clamp(30px, 4.2vw, 48px);
+}
+.section-head p{margin-top:18px;font-size:17px;}
+.section-head.center{
+  margin-left:auto;
+  margin-right:auto;
+  text-align:center;
+}
+.section-head.center .eyebrow{justify-content:center;}
+.section-head.center .eyebrow::before{display:none;}
+.section-head.center p{margin-left:auto;margin-right:auto;}
+
+@keyframes fadeInUp{
+  from{
+   opacity:0;
+   transform:translateY(40px);
+  }
+  to{
+   opacity:1;
+   transform:translateY(0);
+  }
+}
+
+/* ============================================
+   ABOUT (HIDDEN)
+   ============================================ */
+.about{
+  display:none !important;
+}
+
+/* ============================================
+   SERVICES
+   ============================================ */
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+.service-card{
+  background:linear-gradient(135deg, var(--card) 0%, var(--void-2) 100%);
+  border:1px solid var(--card-border);
+  padding:36px 26px;
+  transition:all 0.35s var(--ease);
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  border-radius:8px;
+  position:relative;
+  overflow:hidden;
+}
+.service-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:100%;
+  height:3px;
+  background:linear-gradient(90deg, var(--brass), transparent);
+  transform:scaleX(0);
+  transition:transform 0.35s var(--ease);
+  transform-origin:left;
+}
+.service-card:hover::before{
+  transform:scaleX(1);
+}
+.service-card:hover{
+  border-color:var(--brass-dim);
+  transform:translateY(-6px);
+  box-shadow:0 22px 44px -18px rgba(201,162,75,0.4);
+}
+.service-icon{
+  width:46px;height:46px;
+  color:var(--brass);
+  margin-bottom:22px;
+  transition:transform 0.3s var(--ease);
+}
+.service-card:hover .service-icon{
+  transform:scale(1.15) rotate(5deg);
+}
+.service-card h3{margin-bottom:10px;transition:color 0.3s;}
+.service-card:hover h3{color:var(--brass-bright);}
+.service-card p{font-size:14.5px;flex-grow:1;}
+.service-meta{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-top:24px;
+  padding-top:20px;
+  border-top:1px solid var(--card-border);
+}
+.service-price{
+  font-family:var(--font-display);
+  font-size:20px;
+  color:var(--brass);
+  font-weight:700;
+}
+.service-time{
+  font-size:12px;
+  color:var(--ash);
+  letter-spacing:0.04em;
+  font-weight:600;
+}
+
+/* ============================================
+   PRICE TABLE
+   ============================================ */
+.pricing{
+  background:var(--void-2);
+  border-top:1px solid var(--card-border);
+  border-bottom:1px solid var(--card-border);
+}
+.price-table{
+  width:100%;
+  border-collapse:collapse;
+}
+.price-table thead th{
+  text-align:left;
+  font-size:12px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--brass);
+  font-weight:700;
+  padding-bottom:18px;
+  border-bottom:2px solid var(--brass-dim);
+}
+.price-table thead th:last-child,
+.price-table thead th:nth-child(2){text-align:right;}
+.price-table tbody td{
+  padding:22px 0;
+  border-bottom:1px solid var(--card-border);
+  font-size:16px;
+  transition:all 0.3s;
+}
+.price-table tbody tr:hover td{
+  color:var(--brass-bright);
+}
+.price-table tbody td:nth-child(2),
+.price-table tbody td:nth-child(3){text-align:right;color:var(--ash);}
+.price-table tbody tr:hover td:nth-child(2),
+.price-table tbody tr:hover td:nth-child(3){color:var(--brass);}
+.price-table tbody td:first-child{font-family:var(--font-display);font-size:19px;font-weight:600;color:var(--bone);}
+.price-table tbody td:nth-child(2){color:var(--brass);font-weight:700;font-family:var(--font-display);font-size:18px;}
+.price-table tbody tr:last-child td{border-bottom:none;}
+
+.price-cards{display:none;}
+.price-card{
+  background:var(--card);
+  border:1px solid var(--card-border);
+  padding:22px;
+}
+.price-card + .price-card{margin-top:14px;}
+.price-card-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  margin-bottom:8px;
+}
+.price-card-top h4{
+  font-family:var(--font-display);
+  font-size:18px;
+  color:var(--bone);
+  font-weight:700;
+}
+.price-card-top .amount{
+  font-family:var(--font-display);
+  color:var(--brass);
+  font-size:18px;
+  font-weight:700;
+}
+.price-card-time{font-size:12.5px;color:var(--ash);font-weight:600;}
+
+/* ============================================
+   TEAM
+   ============================================ */
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+}
+.team-card{
+  text-align:left;
+  transition:all 0.3s var(--ease);
+}
+.team-card:hover{
+  transform:translateY(-8px);
+}
+.team-photo{
+  position:relative;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  margin-bottom:20px;
+  border-radius:8px;
+  border:2px solid var(--brass-dim);
+}
+.team-photo img{
+  width:100%;height:100%;
+  filter:grayscale(80%) contrast(1.1) brightness(0.75);
+  transition:transform 0.6s var(--ease), filter 0.6s var(--ease);
+}
+.team-card:hover .team-photo img{
+  transform:scale(1.08);
+  filter:grayscale(30%) contrast(1.1) brightness(0.9);
+}
+.team-photo::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 60%, rgba(10,9,8,0.75) 100%);
+}
+.team-card h3{margin-bottom:4px;transition:color 0.3s;}
+.team-card:hover h3{color:var(--brass-bright);}
+.team-role{
+  color:var(--brass);
+  font-size:13px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+  font-weight:700;
+}
+.team-exp{font-size:14px;color:var(--ash);}
+
+/* ============================================
+   GALLERY
+   ============================================ */
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:220px;
+  gap:14px;
+}
+.gallery-item{
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+  border-radius:8px;
+  border:1px solid var(--card-border);
+}
+.gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2;}
+.gallery-item:nth-child(4){grid-column:span 2;}
+.gallery-item img{
+  width:100%;height:100%;
+  filter:grayscale(60%) contrast(1.1) brightness(0.8);
+  transition:transform 0.6s var(--ease), filter 0.6s var(--ease);
+}
+.gallery-item:hover img{
+  transform:scale(1.12);
+  filter:grayscale(15%) contrast(1.1) brightness(0.95);
+}
+.gallery-item::after{
+  content:'';
+  position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 50%, rgba(10,9,8,0.7) 100%);
+  opacity:0;
+  transition:opacity 0.4s;
+}
+.gallery-item:hover::after{opacity:1;}
+.gallery-tag{
+  position:absolute;
+  bottom:16px;left:16px;
+  font-size:12px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--brass-bright);
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity 0.4s, transform 0.4s;
+  font-weight:700;
+}
+.gallery-item:hover .gallery-tag{opacity:1;transform:translateY(0);}
+
+.gallery-filters{
+  display:flex;
+  gap:10px;
+  margin-bottom:36px;
+  flex-wrap:wrap;
+}
+.filter-btn{
+  padding:10px 22px;
+  border:2px solid var(--card-border);
+  font-size:12px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--ash);
+  transition:all 0.3s;
+  border-radius:4px;
+  font-weight:700;
+}
+.filter-btn.active,
+.filter-btn:hover{
+  border-color:var(--brass);
+  color:var(--brass);
+  background:rgba(201,162,75,0.08);
+}
+
+/* Lightbox */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(6,5,4,0.96);
+  backdrop-filter:blur(10px);
+  z-index:2000;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.4s, backdrop-filter 0.4s;
+  padding:40px;
+}
+.lightbox.open{
+  opacity:1;
+  pointer-events:auto;
+}
+.lightbox img{
+  max-width:min(900px,90vw);
+  max-height:82vh;
+  filter:grayscale(40%) contrast(1.1);
+  border:1px solid var(--brass-dim);
+  border-radius:8px;
+  animation:lightboxIn 0.4s var(--ease);
+}
+@keyframes lightboxIn{
+  from{
+    opacity:0;
+    transform:scale(0.95);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+.lightbox-close{
+  position:absolute;
+  top:28px;right:28px;
+  width:44px;height:44px;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--bone);
+  border:1px solid rgba(232,226,212,0.3);
+  transition:all 0.3s;
+  border-radius:4px;
+  cursor:pointer;
+}
+.lightbox-close:hover{
+  color:var(--brass);
+  border-color:var(--brass);
+  background:rgba(201,162,75,0.1);
+  transform:rotate(90deg);
+}
+
+/* ============================================
+   BOOKING (HIDDEN)
+   ============================================ */
+.booking{
+  display:none !important;
+}
+
+/* ============================================
+   LOCATION
+   ============================================ */
+.location-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:var(--space-lg);
+  align-items:stretch;
+}
+.location-info{display:flex;flex-direction:column;gap:28px;}
+.loc-row{
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  padding:20px;
+  background:var(--card);
+  border:1px solid var(--card-border);
+  border-radius:6px;
+  transition:all 0.3s var(--ease);
+}
+.loc-row:hover{
+  border-color:var(--brass);
+  transform:translateX(8px);
+  box-shadow:0 10px 30px rgba(201,162,75,0.1);
+}
+.loc-row svg{color:var(--brass);width:22px;height:22px;flex-shrink:0;margin-top:3px;}
+.loc-row h4{font-family:var(--font-display);font-size:17px;margin-bottom:4px;color:var(--bone);font-weight:700;}
+.loc-row p{font-size:14.5px;}
+.hours-list{list-style:none;width:100%;}
+.hours-list li{
+  display:flex;
+  justify-content:space-between;
+  font-size:14.5px;
+  color:var(--ash);
+  padding:9px 0;
+  border-bottom:1px solid var(--card-border);
+  font-weight:500;
+}
+.hours-list li span:last-child{color:var(--bone);font-weight:600;}
+
+.map-frame{
+  border:2px solid var(--brass-dim);
+  background:var(--card);
+  min-height:340px;
+  overflow:hidden;
+  border-radius:8px;
+  transition:all 0.3s var(--ease);
+  position:relative;
+}
+.map-frame:hover{
+  border-color:var(--brass);
+  box-shadow:0 20px 50px rgba(201,162,75,0.15);
+  transform:translateY(-4px);
+}
+.map-frame iframe{
+  width:100%;
+  height:100%;
+  min-height:340px;
+  border:0;
+  display:block;
+  filter:grayscale(35%) contrast(1.08) brightness(0.92);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer{
+  padding-top:var(--space-lg);
+  padding-bottom:36px;
+}
+.footer-top{
+  display:grid;
+  grid-template-columns:1.3fr 1fr 1fr;
+  gap:var(--space-lg);
+  padding-bottom:var(--space-lg);
+}
+.footer-brand .logo{margin-bottom:18px;}
+.footer-brand p{font-size:14.5px;margin-bottom:24px;color:var(--ash);}
+.footer-social{display:flex;gap:14px;}
+.footer-social a{
+  width:42px;height:42px;
+  border:1.5px solid var(--card-border);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--bone);
+  transition:all 0.3s var(--ease);
+  border-radius:4px;
+}
+.footer-social a:hover{
+  border-color:var(--brass);
+  color:var(--brass);
+  background:rgba(201,162,75,0.08);
+  transform:translateY(-3px);
+  box-shadow:0 8px 20px rgba(201,162,75,0.2);
+}
+.footer-social svg{width:18px;height:18px;}
+
+.footer-col h4{
+  font-size:12px;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--brass);
+  margin-bottom:22px;
+  font-weight:700;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:13px;}
+.footer-col a,
+.footer-col span{
+  font-size:14.5px;
+  color:var(--ash);
+  transition:all 0.3s;
+  font-weight:500;
+}
+.footer-col a:hover{
+  color:var(--brass);
+  transform:translateX(4px);
+}
+
+.footer-bottom{
+  padding-top:28px;
+  border-top:1px solid var(--card-border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
+  font-size:13px;
+  color:var(--ash);
+  font-weight:500;
+}
+
+/* ============================================
+   RESPONSIVE — Tablet (≤1023px)
+   ============================================ */
+@media (max-width:1023px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-visual{order:-1;height:clamp(280px,44vh,420px);}
+  .hero-content{max-width:100%;}
+  .hero{padding-top:100px;}
+
+  .services-grid{grid-template-columns:repeat(2,1fr);}
+  .team-grid{grid-template-columns:repeat(2,1fr);}
+  .team-grid > *:last-child{grid-column:1 / -1;max-width:calc(50% - 13px);}
+
+  .gallery-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:180px;}
+  .gallery-item:nth-child(1){grid-column:span 2;grid-row:span 2;}
+  .gallery-item:nth-child(4){grid-column:span 1;}
+
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .footer-brand{grid-column:1 / -1;}
+
+  .location-grid{grid-template-columns:1fr;}
+}
+
+/* ============================================
+   RESPONSIVE — Mobile (≤767px)
+   ============================================ */
+@media (max-width:767px){
+  section{padding-top:var(--space-lg);padding-bottom:var(--space-lg);}
+
+  .hero-actions{flex-direction:column;align-items:stretch;}
+  .hero-actions .btn{width:100%;}
+  .hero-strip{gap:20px;}
+  .scroll-cue{display:none;}
+
+  .services-grid{grid-template-columns:1fr;}
+  .team-grid{grid-template-columns:1fr;}
+  .team-grid > *:last-child{max-width:100%;}
+
+  .price-table{display:none;}
+  .price-cards{display:block;}
+
+  .gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:150px;}
+  .gallery-item:nth-child(1){grid-column:span 2;grid-row:span 1;}
+
+  .footer-top{grid-template-columns:1fr;gap:var(--space-md);}
+  .footer-bottom{flex-direction:column;align-items:flex-start;}
+
+  .lightbox{padding:20px;}
+  .lightbox-close{top:16px;right:16px;}
+}
+
+@media (max-width:380px){
+  .logo{font-size:19px;}
+  .nav{padding-left:18px;padding-right:18px;}
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{
+    animation-duration:0.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.001ms !important;
+    scroll-behavior:auto !important;
+  }
+  .hero-content h1,
+  .hero-content .lead,
+  .hero-actions,
+  .hero-strip,
+  .reveal,
+  .reveal-stagger > *{
+    opacity:1 !important;
+    transform:none !important;
+  }
+}
+</style>
+</head>
+<body class="no-js">
+
+<!-- ============================================
+     NAV
+     ============================================ -->
+<nav class="nav" id="nav">
+  <a href="#home" class="logo">Alish<span>Barber</span></a>
+
+  <ul class="nav-links">
+    <li><a href="#services">Xizmatlar</a></li>
+    <li><a href="#team">Ustalar</a></li>
+    <li><a href="#gallery">Galereya</a></li>
+    <li><a href="#location">Aloqa</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <a href="tel:+998901234567" class="btn btn-primary nav-call-btn" aria-label="Qo'ng'iroq qilish">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Qo'ng'iroq
+    </a>
+    <button class="hamburger" id="hamburger" aria-label="Menyuni ochish" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#services">Xizmatlar</a>
+  <a href="#team">Ustalar</a>
+  <a href="#gallery">Galereya</a>
+  <a href="#location">Aloqa</a>
+  <a href="tel:+998901234567" class="btn btn-primary">Qo'ng'iroq qilish</a>
+</div>
+
+<!-- ============================================
+     HERO — two-column layout: text left, framed image right
+     ============================================ -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+
+    <div class="hero-content">
+      <p class="eyebrow">Xorazm · Xonqa</p>
+      <h1>Zamonaviy Sartaroshxona,<br><em>Klassik Sifat</em></h1>
+      <p class="lead">An'ana bilan zamonaviylik uyg'unlashgan joy — har bir mijoz uchun aniqlik, mahorat va e'tibor bilan ishlaymiz.</p>
+      <div class="hero-actions">
+        <a href="#services" class="btn btn-primary">Xizmatlarni ko'rish</a>
+        <a href="#gallery" class="btn btn-ghost">Galereya</a>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="scroll-cue">
+    <span>Pastga</span>
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ============================================
+     SERVICES
+     ============================================ -->
+<section id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Xizmatlarimiz</p>
+      <h2>Bizning Xizmatlarimiz</h2>
+    </div>
+
+    <div class="services-grid reveal-stagger">
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/></svg>
+        <h3>Klassik soch olish</h3>
+        <p>An'anaviy texnika va zamonaviy uslublar uyg'unligida, mashina va qaychi bilan aniq kesim.</p>
+        <div class="service-meta">
+          <span class="service-price">35 000 so'm</span>
+          <span class="service-time">30 daqiqa</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-3 0-5 2-5 5v4c0 4 2 7 5 8 3-1 5-4 5-8V8c0-3-2-5-5-5z"/><path d="M9 12h6"/></svg>
+        <h3>Soqol dizayni</h3>
+        <p>Yuz shakliga mos soqol shakllantirish, ustara bilan aniqlash va issiq sochiq parvarishi.</p>
+        <div class="service-meta">
+          <span class="service-price">30 000 so'm</span>
+          <span class="service-time">25 daqiqa</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/><path d="M4 12h1"/></svg>
+        <h3>Soch + Soqol</h3>
+        <p>To'liq kompleks xizmat — soch olish va soqol dizayni birgalikda, vaqtdan tejash bilan.</p>
+        <div class="service-meta">
+          <span class="service-price">55 000 so'm</span>
+          <span class="service-time">50 daqiqa</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a5 5 0 0 0-5 5c0 3 2 5 2 8h6c0-3 2-5 2-8a5 5 0 0 0-5-5z"/><path d="M9 20h6M10 22h4"/></svg>
+        <h3>Bolalar uchun</h3>
+        <p>Kichik mijozlar uchun qulay, xotirjam muhitda bajariladigan yumshoq va tez kesim.</p>
+        <div class="service-meta">
+          <span class="service-price">25 000 so'm</span>
+          <span class="service-time">20 daqiqa</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     PRICING
+     ============================================ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Narxlar</p>
+      <h2>Aniq va shaffof narxlar</h2>
+    </div>
+
+    <div class="reveal">
+      <table class="price-table" aria-label="Xizmatlar narxi jadvali">
+        <thead>
+          <tr><th>Xizmat</th><th>Narx</th><th>Vaqt</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Klassik soch olish</td><td>35 000 so'm</td><td>30 daqiqa</td></tr>
+          <tr><td>Soqol dizayni va parvarishi</td><td>30 000 so'm</td><td>25 daqiqa</td></tr>
+          <tr><td>Soch + Soqol (kompleks)</td><td>55 000 so'm</td><td>50 daqiqa</td></tr>
+          <tr><td>Bolalar uchun soch olish</td><td>25 000 so'm</td><td>20 daqiqa</td></tr>
+        </tbody>
+      </table>
+
+      <div class="price-cards">
+        <div class="price-card">
+          <div class="price-card-top"><h4>Klassik soch olish</h4><span class="amount">35 000 so'm</span></div>
+          <div class="price-card-time">30 daqiqa</div>
+        </div>
+        <div class="price-card">
+          <div class="price-card-top"><h4>Soqol dizayni va parvarishi</h4><span class="amount">30 000 so'm</span></div>
+          <div class="price-card-time">25 daqiqa</div>
+        </div>
+        <div class="price-card">
+          <div class="price-card-top"><h4>Soch + Soqol (kompleks)</h4><span class="amount">55 000 so'm</span></div>
+          <div class="price-card-time">50 daqiqa</div>
+        </div>
+        <div class="price-card">
+          <div class="price-card-top"><h4>Bolalar uchun soch olish</h4><span class="amount">25 000 so'm</span></div>
+          <div class="price-card-time">20 daqiqa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TEAM
+     ============================================ -->
+<section id="team">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Jamoamiz</p>
+      <h2>Sartaroshlarimiz</h2>
+    </div>
+
+    <div class="team-grid reveal-stagger">
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&q=80" alt="Alisher — usta">
+        </div>
+        <h3>Alisher</h3>
+        <p class="team-role">Bosh usta</p>
+        <p class="team-exp">6 yillik tajriba · Klassik kesim mutaxassisi</p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Botir — usta">
+        </div>
+        <h3>Botir</h3>
+        <p class="team-role">Soqol ustasi</p>
+        <p class="team-exp">4 yillik tajriba · Soqol dizayni mutaxassisi</p>
+      </div>
+
+      <div class="team-card">
+        <div class="team-photo">
+          <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&q=80" alt="Davron — usta">
+        </div>
+        <h3>Davron</h3>
+        <p class="team-role">Uslub ustasi</p>
+        <p class="team-exp">3 yillik tajriba · Zamonaviy uslublar</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     GALLERY
+     ============================================ -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">Galereya</p>
+      <h2>Bizning ishlarimiz</h2>
+    </div>
+
+    <div class="gallery-filters reveal">
+      <button class="filter-btn active" data-filter="all">Barchasi</button>
+      <button class="filter-btn" data-filter="soch">Soch</button>
+      <button class="filter-btn" data-filter="soqol">Soqol</button>
+      <button class="filter-btn" data-filter="uslub">Uslub</button>
+    </div>
+
+    <div class="gallery-grid reveal" id="galleryGrid">
+      <div class="gallery-item" data-cat="soch">
+        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=800&q=80" alt="Klassik soch kesimi">
+        <span class="gallery-tag">Klassik kesim</span>
+      </div>
+      <div class="gallery-item" data-cat="soqol">
+        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&q=80" alt="Soqol dizayni">
+        <span class="gallery-tag">Soqol dizayni</span>
+      </div>
+      <div class="gallery-item" data-cat="uslub">
+        <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80" alt="Zamonaviy uslub">
+        <span class="gallery-tag">Zamonaviy uslub</span>
+      </div>
+      <div class="gallery-item" data-cat="soch">
+        <img src="https://images.unsplash.com/photo-1512690459411-b9245aed614b?w=800&q=80" alt="Aniq kesim">
+        <span class="gallery-tag">Aniq kesim</span>
+      </div>
+      <div class="gallery-item" data-cat="soqol">
+        <img src="https://images.unsplash.com/photo-1587909209111-5097ee578ec3?w=600&q=80" alt="Soqol parvarishi">
+        <span class="gallery-tag">Soqol parvarishi</span>
+      </div>
+      <div class="gallery-item" data-cat="uslub">
+        <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&q=80" alt="Premium uslub">
+        <span class="gallery-tag">Premium uslub</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Yopish">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+  <img src="" alt="" id="lightboxImg">
+</div>
+
+<!-- ============================================
+     LOCATION
+     ============================================ -->
+<section id="location">
+  <div class="container location-grid">
+
+    <div class="location-info reveal">
+      <p class="eyebrow">Bizni toping</p>
+      <h2>Joylashuv va<br>ish vaqti</h2>
+
+      <div class="loc-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div>
+          <h4>Manzil</h4>
+          <p>Xorazm viloyati, Xonqa tumani</p>
+        </div>
+      </div>
+
+      <div class="loc-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div>
+          <h4>Telefon</h4>
+          <p><a href="tel:+998901234567">+998 90 123 45 67</a></p>
+        </div>
+      </div>
+
+      <div class="loc-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div style="width:100%;">
+          <h4>Ish vaqti</h4>
+          <ul class="hours-list">
+            <li><span>Dushanba – Juma</span><span>09:00 – 21:00</span></li>
+            <li><span>Shanba</span><span>10:00 – 20:00</span></li>
+            <li><span>Yakshanba</span><span>10:00 – 18:00</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <div class="map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=Xonqa,+Xorazm+viloyati,+Uzbekistan&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="AlishBarber joylashuvi — Xonqa, Xorazm">
+        </iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+     ============================================ -->
+<footer>
+  <div class="container">
+    <div class="divider" style="margin-bottom:var(--space-lg);"></div>
+
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="logo">Alish<span>Barber</span></a>
+        <p>Erkaklar uchun premium sartaroshxona xizmati. Klassik mahorat, zamonaviy natija.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Telegram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigatsiya</h4>
+        <ul>
+          <li><a href="#services">Xizmatlar</a></li>
+          <li><a href="#team">Ustalar</a></li>
+          <li><a href="#gallery">Galereya</a></li>
+          <li><a href="#location">Aloqa</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Aloqa</h4>
+        <ul>
+          <li><a href="tel:+998901234567">+998 90 123 45 67</a></li>
+          <li><span>Xorazm viloyati, Xonqa</span></li>
+          <li><span>Har kuni 09:00 – 21:00</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 AlishBarber. Barcha huquqlar himoyalangan.</span>
+      <span>Javohir Javlonboyev tomonidan ishlab chiqilgan</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  document.body.classList.remove('no-js');
+
+  /* ---------- NAV scroll state ---------- */
+  var nav = document.getElementById('nav');
+  function onScroll(){
+    if(window.scrollY > 40){ nav.classList.add('scrolled'); }
+    else{ nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- Mobile menu ---------- */
+  var hamburger = document.getElementById('hamburger');
+  var mobilePanel = document.getElementById('mobilePanel');
+  var mobileOverlay = document.getElementById('mobileOverlay');
+
+  function closeMenu(){
+    hamburger.classList.remove('open');
+    mobilePanel.classList.remove('open');
+    mobileOverlay.classList.remove('open');
+    hamburger.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+  function toggleMenu(){
+    var isOpen = mobilePanel.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    mobileOverlay.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen ? 'true':'false');
+    document.body.style.overflow = isOpen ? 'hidden':'';
+  }
+  hamburger.addEventListener('click', toggleMenu);
+  mobileOverlay.addEventListener('click', closeMenu);
+  mobilePanel.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', closeMenu);
+  });
+
+  /* ---------- Hero load animation ---------- */
+  var hero = document.querySelector('.hero');
+  window.addEventListener('load', function(){
+    hero.classList.add('loaded');
+  });
+  setTimeout(function(){ hero.classList.add('loaded'); }, 300);
+
+  /* ---------- Scroll reveal: IntersectionObserver + fallback ---------- */
+  var revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+  var ioSupported = 'IntersectionObserver' in window;
+
+  if(ioSupported){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in-view');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
+
+    revealEls.forEach(function(el){ io.observe(el); });
+
+    setTimeout(function(){
+      var anyRevealed = document.querySelector('.in-view');
+      if(!anyRevealed){
+        document.documentElement.classList.add('js-fallback');
+      }
+    }, 2500);
+  } else {
+    document.documentElement.classList.add('js-fallback');
+  }
+
+  /* ---------- Gallery filter ---------- */
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  var galleryItems = document.querySelectorAll('.gallery-item');
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filterBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var filter = btn.getAttribute('data-filter');
+      galleryItems.forEach(function(item){
+        var show = (filter === 'all') || (item.getAttribute('data-cat') === filter);
+        item.style.display = show ? '' : 'none';
+      });
+    });
+  });
+
+  /* ---------- Lightbox ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxClose = document.getElementById('lightboxClose');
+
+  galleryItems.forEach(function(item){
+    item.addEventListener('click', function(){
+      var img = item.querySelector('img');
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+      document.body.style.overflow='hidden';
+    });
+  });
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow='';
+  }
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function(e){
+    if(e.target === lightbox){ closeLightbox(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){ closeLightbox(); closeMenu(); }
+  });
+
+  /* ---------- Smooth anchor scroll with header offset ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(link){
+    link.addEventListener('click', function(e){
+      var id = link.getAttribute('href');
+      if(id.length < 2) return;
+      var target = document.querySelector(id);
+      if(!target) return;
+      e.preventDefault();
+      var offset = 84;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({top:top, behavior:'smooth'});
+    });
+  });
+
+})();
+</script>
+
+</body>
+</html>
